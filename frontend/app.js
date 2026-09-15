@@ -9,6 +9,7 @@ const messageBox = document.querySelector("#messageBox");
 const sessionStatus = document.querySelector("#sessionStatus");
 const logoutButton = document.querySelector("#logoutButton");
 const profileOutput = document.querySelector("#profileOutput");
+const tiltCards = document.querySelectorAll(".panel, .info-panel, .hero-card");
 
 let session = JSON.parse(localStorage.getItem("eventPortalSession") || "null");
 
@@ -145,6 +146,23 @@ document.querySelectorAll(".side-nav a").forEach((link) => {
   link.addEventListener("click", () => {
     document.querySelectorAll(".side-nav a").forEach((item) => item.classList.remove("active"));
     link.classList.add("active");
+  });
+});
+
+tiltCards.forEach((card) => {
+  card.classList.add("tilt-card");
+
+  card.addEventListener("pointermove", (event) => {
+    if (window.matchMedia("(max-width: 980px)").matches) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `rotateX(${y * -7}deg) rotateY(${x * 9}deg) translateY(-3px)`;
+  });
+
+  card.addEventListener("pointerleave", () => {
+    card.style.transform = "";
   });
 });
 

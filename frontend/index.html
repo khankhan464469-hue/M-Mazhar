@@ -4,15 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Portal</title>
-    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="scene-3d" aria-hidden="true">
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+      <span class="cube cube-a"></span>
+      <span class="cube cube-b"></span>
+      <span class="ring ring-a"></span>
+    </div>
+
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark" aria-hidden="true">EP</div>
+        <div class="brand-mark" aria-hidden="true"><span>EP</span></div>
         <div>
           <h1>Event Portal</h1>
-          <p>Local events. Stronger communities.</p>
+          <p>Bright events. Smooth booking.</p>
         </div>
       </div>
 
@@ -23,7 +32,7 @@
         <a href="#help">Help</a>
       </nav>
 
-      <p class="sidebar-note">Customer and admin accounts are stored in Supabase with separate roles.</p>
+      <p class="sidebar-note">Customer and admin accounts stay organized with separate Supabase roles.</p>
     </aside>
 
     <main class="page">
@@ -35,7 +44,12 @@
       <section class="hero" id="account">
         <div>
           <h2>Event Portal</h2>
-          <p>Sign in or create an account to manage events, registrations, and profile records.</p>
+          <p>Sign in, create customer accounts, manage admins, and keep profile records flowing into Supabase.</p>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <span class="pulse-dot"></span>
+          <strong>Live Supabase</strong>
+          <small>Auth + profiles + events</small>
         </div>
       </section>
 
@@ -114,6 +128,6 @@
       </section>
     </main>
 
-    <script src="/static/app.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

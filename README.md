@@ -10,7 +10,7 @@ Event Portal is a FastAPI and Supabase project for managing event accounts and e
 - Forgot password email flow
 - Event create, read, update, and delete API
 - Separate customer and admin profile records in Supabase
-- Simple static frontend served by FastAPI
+- Colorful 3D-style static frontend with glass panels and hover motion
 
 ## Project Structure
 

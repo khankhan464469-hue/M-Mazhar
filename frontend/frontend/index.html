@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Portal</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">EP</div>
+        <div>
+          <h1>Event Portal</h1>
+          <p>Local events. Stronger communities.</p>
+        </div>
+      </div>
+
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="active" href="#account">Account</a>
+        <a href="#events">Events</a>
+        <a href="#profiles">Profiles</a>
+        <a href="#help">Help</a>
+      </nav>
+
+      <p class="sidebar-note">Customer and admin accounts are stored in Supabase with separate roles.</p>
+    </aside>
+
+    <main class="page">
+      <header class="topbar">
+        <span id="sessionStatus">Not signed in</span>
+        <button class="ghost-button" id="logoutButton" type="button" hidden>Logout</button>
+      </header>
+
+      <section class="hero" id="account">
+        <div>
+          <h2>Event Portal</h2>
+          <p>Sign in or create an account to manage events, registrations, and profile records.</p>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="auth-area">
+          <div class="tabs" role="tablist" aria-label="Account forms">
+            <button class="tab active" data-tab="login" type="button">Login</button>
+            <button class="tab" data-tab="customer" type="button">Customer Signup</button>
+            <button class="tab" data-tab="admin" type="button">Admin Signup</button>
+            <button class="tab" data-tab="forgot" type="button">Forgot Password</button>
+          </div>
+
+          <form class="panel active" id="loginForm">
+            <h3>Login</h3>
+            <p>Welcome back. Sign in with your email and password.</p>
+            <label>Email <input name="email" type="email" placeholder="you@example.com" required /></label>
+            <label>Password <input name="password" type="password" placeholder="Enter your password" required /></label>
+            <button class="primary-button" type="submit">Login</button>
+          </form>
+
+          <form class="panel" id="customerForm">
+            <h3>Create customer account</h3>
+            <p>Customer data will be saved in Supabase with role: customer.</p>
+            <label>Full name <input name="full_name" type="text" placeholder="Customer name" required /></label>
+            <label>Email <input name="email" type="email" placeholder="customer@example.com" required /></label>
+            <label>Password <input name="password" type="password" placeholder="Minimum 6 characters" minlength="6" required /></label>
+            <button class="primary-button" type="submit">Create customer account</button>
+          </form>
+
+          <form class="panel" id="adminForm">
+            <h3>Create admin account</h3>
+            <p>Admin data will be saved in Supabase with role: admin.</p>
+            <label>Full name <input name="full_name" type="text" placeholder="Admin name" required /></label>
+            <label>Email <input name="email" type="email" placeholder="admin@example.com" required /></label>
+            <label>Password <input name="password" type="password" placeholder="Minimum 6 characters" minlength="6" required /></label>
+            <label>Admin code <input name="admin_code" type="password" placeholder="Private admin signup code" required /></label>
+            <button class="primary-button amber" type="submit">Create admin account</button>
+          </form>
+
+          <form class="panel" id="forgotForm">
+            <h3>Forgot Password</h3>
+            <p>Enter your email and Supabase will send a reset link.</p>
+            <label>Email <input name="email" type="email" placeholder="you@example.com" required /></label>
+            <button class="primary-button" type="submit">Send reset email</button>
+          </form>
+
+          <div class="message" id="messageBox" role="status" aria-live="polite"></div>
+        </div>
+
+        <aside class="info-area">
+          <section class="info-panel">
+            <h3>Account Information</h3>
+            <p>Powered by Supabase Auth and a profiles table.</p>
+
+            <div class="role-card customer">
+              <strong>Customer Accounts</strong>
+              <span>Saved with role: customer</span>
+            </div>
+
+            <div class="role-card admin">
+              <strong>Admin Accounts</strong>
+              <span>Saved with role: admin</span>
+            </div>
+          </section>
+
+          <section class="info-panel" id="profiles">
+            <h3>Profile Worksheet</h3>
+            <p>Admins can fetch separate customer and admin lists from Supabase.</p>
+            <div class="button-row">
+              <button class="secondary-button" id="loadCustomers" type="button">Load customers</button>
+              <button class="secondary-button" id="loadAdmins" type="button">Load admins</button>
+            </div>
+            <pre id="profileOutput">Login as admin to view records.</pre>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
